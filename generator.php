@@ -4,10 +4,9 @@ require 'PDF.php';
 require 'Template1.php';
 
 if(isset($_FILES['photo'])){
-	$extension = pathinfo($_FILES['photo']['tmp_name'],PATHINFO_EXTENSION);
+	$extension = pathinfo($_FILES['photo']['name'],PATHINFO_EXTENSION);
 	$name = str_rand("azertyuiop123456789",8).'.'.$extension;
-	$r = move_uploaded_file($_FILES['photo']['tmp_name'],'img/'.$name);
-	var_dump($r);
+	move_uploaded_file($_FILES['photo']['tmp_name'],'img/'.$name);
 }
 
 /*$template = new Template1;
