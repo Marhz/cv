@@ -4,11 +4,13 @@
 	<meta charset="UTF-8">
 	<title>Générateur de cd</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
 	<div id="app">
 		<div class="main">
+			<p>vrgcermbvmvmazmdzem</p>
 			<div v-for="exp_pro in exps_pro">
 				<p>{{exp_pro.desc}}</p>
 			</div>
@@ -20,7 +22,7 @@
 
 				<div class="form-group">
 					<label for="photo">Photo(optionel)</label>
-					<input type="file" class="form-control">
+					<input type="file" name="photo" id="photo" class="form-control">
 				</div>	
 
 				<div class="form-group">
@@ -51,29 +53,43 @@
 				<h2>Formations</h2>	
 
 				<div class="form-group" v-for="formation in formations">
-					<label for="debut_formation">Debut :</label><input v-model="formation.debut" id="debut_formation" class="width40 form-control" type="number" name="debut_formation[]">
-					<label for="fin_formation">Fin :</label><input v-model="formation.fin"  id="fin_formation" class="width40 form-control" type="number" name="fin_formation[]">			<br/><br/>
+					<div class="width40">
+					<label for="debut_formation">Debut :</label><input v-model="formation.debut" id="debut_formation" class=" form-control" type="number" name="debut_formation[]">
+					</div>
+					<div class="width40">
+					<label for="fin_formation">Fin :</label><input v-model="formation.fin"  id="fin_formation" class="form-control" type="number" name="fin_formation[]">
+					</div >
+					<br/><br/>
 					<label for="">Descriptif :</label>
 					<textarea v-model="formation.desc" name="formations[]" class="form-control" id="" rows="5"></textarea>
+					<i v-on:click="removeFormation(formation)" class="fa fa-minus-circle my-button minus pull-right"></i>
 				</div>
-				<button type="button" @click="addFormation">add</button>	
+				<div class="clear"></div>				
+				<i @click="addFormation" class="fa fa-plus-circle my-button plus pull-right"></i>	
 
-				<h2>Expérience profesionnelles</h2>	
+				<h2>Expériences profesionnelles</h2>	
 
 				<div class="form-group" v-for="exp_pro in exps_pro">
-					<label for="debut_exp">Debut :</label><input v-model="exp_pro.debut" id="debut_exp" class="width40 form-control" type="number" name="debut_exp[]">
-					<label for="fin_exp">Fin :</label><input v-model="exp_pro.fin" id="fin_exp" class="width40 form-control" type="number" name="fin_exp[]">
+					<div class="width40">
+					<label for="debut_exp">Debut :</label><input v-model="exp_pro.debut" id="debut_exp" class=" form-control" type="number" name="debut_exp[]">
+					</div>
+					<div class="width40">
+					<label for="fin_exp">Fin :</label><input v-model="exp_pro.fin" id="fin_exp" class="form-control" type="number" name="fin_exp[]">
+					</div>
 					<br/><br/>
 					<label for="">Descriptif</label>
 					<textarea v-model="exp_pro.desc" name="exp_pro[]" class="form-control" id="" rows="5"></textarea>
+					<i @click="removeExp(exp_pro)" class="fa fa-minus-circle my-button minus pull-right"></i>
 				</div>
-				<button type="button" @click="addExpsPro">add</button>
-				<input type="submit" class="btn btn-primary pull-right" />
+				<div class="clear"></div>
+				<i @click="addExpsPro" class="fa fa-plus-circle my-button plus pull-right"></i>
+
+				<input type="submit" class="btn btn-primary form-control" />
 			</form>
 		</div>
 	</div>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.8/vue.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.16/vue.js"></script>
 	<script>
 		
 		new Vue({
@@ -96,7 +112,14 @@
 				},
 				addExpsPro : function(){
 					this.exps_pro.push({debut :'', fin : '', desc : ''});
-				}
+				},
+				removeExp: function (exp_pro) {
+      				this.exps_pro.$remove(exp_pro);
+   				},
+   				removeFormation: function (formation) {
+      				this.formations.$remove(formation);
+   				}
+
 			}
 		});
 

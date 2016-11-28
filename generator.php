@@ -3,10 +3,14 @@
 require 'PDF.php';
 require 'Template1.php';
 
-//$post = decode_post(array_values($_POST));
+if(isset($_FILES['photo'])){
+	$extension = pathinfo($_FILES['photo']['tmp_name'],PATHINFO_EXTENSION);
+	$name = str_rand("azertyuiop123456789",8).'.'.$extension;
+	$r = move_uploaded_file($_FILES['photo']['tmp_name'],'img/'.$name);
+	var_dump($r);
+}
 
-
-$template = new Template1;
+/*$template = new Template1;
 $pdf = new PDF();
 $pdf->setTemplate($template);
 $pdf->setPost($_POST);
@@ -16,20 +20,13 @@ $pdf->SetFont('Times','',12);
 $pdf->formations();
 $pdf->exp();
 $pdf->Output();
-
-/*function decode_post($post)
-{	
-	for($i = 0; $i < sizeof($post);$i++)
-	{
-		if(is_array($post[$i]))
-		{
-			$post[$i] = decode_post($post[$i]);
-		}
-		else
-			$_POST[$i] = utf8_decode($post[$i]);
-	}
-	return $post;
-}
 */
+
+function str_rand($str, $size){
+	$result = '';
+	for ($i = 0; $i < $size; $i++)
+		$result .= $str[rand(0,strlen($str)-1)];
+	return $result;
+}
 
 ?>

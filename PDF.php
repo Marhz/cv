@@ -21,7 +21,7 @@ class PDF extends FPDF
 	{	
 		extract($this->post);
 	    // Logo
-	    $this->Image('img/default-user-avatar.png',$this->template->img_x,$this->template->img_y,45);
+	    $this->Image('/tmp'.$this->post['img'],$this->template->img_x,$this->template->img_y,45);
 	    // Police Arial gras 15
 	    $this->SetFont($this->template->font_header,$this->template->font_style_header,12);
 	    // Décalage à droite
