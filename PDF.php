@@ -62,7 +62,7 @@ class PDF extends FPDF
 			$this->MultiCell(30,7,utf8_decode($formation),0,2);
 			$i++;
 		}
-		$this->ln(15);
+		$this->ln(10);
 	}
 
 	public function exp()
@@ -82,6 +82,26 @@ class PDF extends FPDF
 			$this->Cell(0,7,$debut_exp[$i].'-'.$fin_exp[$i],0,2);
 			$this->setFont($this->template->font_text);
 			$this->MultiCell(30,7,utf8_decode($exp),0,2);
+			$i++;
+		}
+		$this->ln(10);
+	}
+
+	public function comp()
+	{
+		extract($this->post);
+		$this->setFillColor($this->template->sub_header_color[0],$this->template->sub_header_color[1],$this->template->sub_header_color[2]);
+		$this->setDrawColor($this->template->border_color[0],$this->template->border_color[1],$this->template->border_color[2]);
+		$this->setTextColor($this->template->sub_header_font_color[0],$this->template->sub_header_font_color[1],$this->template->sub_header_font_color[2]);
+		$this->setFont($this->template->font_header,'B',18);
+		$this->Cell(0,10,utf8_decode('Langues et compétences'),1,1,$this->template->sub_header_align,'#cecece');
+		$this->ln(8);
+		$i = 0;
+		$this->setTextColor(0,0,0);
+		foreach ($competences as $competence)
+		{
+			$this->setFont($this->template->font_text,'',14);
+			$this->MultiCell(30,7,utf8_decode($competence),0,2);
 			$i++;
 		}
 	}

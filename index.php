@@ -54,41 +54,41 @@
 
 				<div class="form-group">
 					<label for="nom">Nom :</label>
-					<input v-model="name" class="form-control" type="text" id="nom" name="nom"/>
+					<input v-model="name" class="form-control" type="text" id="nom" name="nom" required/>
 				</div>	
 
 				<div class="form-group">
 					<label for="prenom">Prenom :</label>
-					<input v-model="first_name" class="form-control" type="text" id="prenom" name="prenom"/>
+					<input v-model="first_name" class="form-control" type="text" id="prenom" name="prenom" required/>
 				</div>	
 
 				<div class="form-group">
 					<label for="email">Email :</label>
-					<input v-model="email" class="form-control" type="text" id="email" name="mail"/>
+					<input v-model="email" class="form-control" type="text" id="email" name="mail" required/>
 				</div>	
 
 				<div class="form-group">
 					<label for="date-naissance">Date de naissance :</label>
-					<input v-model="date_naissance" class="form-control" type="text" id="date-naissance" name="date"/>
+					<input v-model="date_naissance" class="form-control" type="text" id="date-naissance" name="date" required/>
 				</div>	
 
 				<div class="form-group">
 					<label for="Tel">Tel :</label>
-					<input v-model="tel" class="form-control" type="text" id="Tel" name="tel"/>
+					<input v-model="tel" class="form-control" type="text" id="Tel" name="tel" required/>
 				</div>	
 
 				<h2>Formations</h2>	
 
 				<div class="form-group" v-for="formation in formations">
 					<div class="width40">
-					<label for="debut_formation">Debut :</label><input v-model="formation.debut" id="debut_formation" class=" form-control" type="number" name="debut_formation[]">
+					<label for="debut_formation">Debut :</label><input v-model="formation.debut" id="debut_formation" class=" form-control" type="number" name="debut_formation[]" required>
 					</div>
 					<div class="width40">
-					<label for="fin_formation">Fin :</label><input v-model="formation.fin"  id="fin_formation" class="form-control" type="number" name="fin_formation[]">
+					<label for="fin_formation">Fin :</label><input v-model="formation.fin"  id="fin_formation" class="form-control" type="number" name="fin_formation[]" required>
 					</div >
 					<br/><br/>
 					<label for="">Descriptif :</label>
-					<textarea v-model="formation.desc" name="formations[]" class="form-control" id="" rows="5"></textarea>
+					<textarea v-model="formation.desc" name="formations[]" class="form-control" id="" rows="5" required></textarea>
 					<i v-on:click="removeFormation(formation)" class="fa fa-minus-circle my-button minus pull-right"></i>
 				</div>
 				<div class="clear"></div>				
@@ -98,14 +98,14 @@
 
 				<div class="form-group" v-for="exp_pro in exps_pro">
 					<div class="width40">
-					<label for="debut_exp">Debut :</label><input v-model="exp_pro.debut" id="debut_exp" class=" form-control" type="number" name="debut_exp[]">
+					<label for="debut_exp">Debut :</label><input v-model="exp_pro.debut" id="debut_exp" class=" form-control" type="number" name="debut_exp[]" required>
 					</div>
 					<div class="width40">
-					<label for="fin_exp">Fin :</label><input v-model="exp_pro.fin" id="fin_exp" class="form-control" type="number" name="fin_exp[]">
+					<label for="fin_exp">Fin :</label><input v-model="exp_pro.fin" id="fin_exp" class="form-control" type="number" name="fin_exp[]" required>
 					</div>
 					<br/><br/>
 					<label for="">Descriptif</label>
-					<textarea v-model="exp_pro.desc" name="exp_pro[]" class="form-control" id="" rows="5"></textarea>
+					<textarea v-model="exp_pro.desc" name="exp_pro[]" class="form-control" id="" rows="5" required></textarea>
 					<i @click="removeExp(exp_pro)" class="fa fa-minus-circle my-button minus pull-right"></i>
 				</div>
 				<div class="clear"></div>
@@ -115,7 +115,7 @@
 
 				<div class="form-group" v-for="competence in competences">
 					<label for="competences">Descriptif</label>
-					<input v-model="competence.desc" name="competences[]" class="form-control" id="competences"></textarea>
+					<input v-model="competence.desc" name="competences[]" class="form-control" id="competences" required></textarea>
 					<i @click="removeCompetence(competence)" class="fa fa-minus-circle my-button minus pull-right"></i>
 				</div>
 				<div class="clear"></div>

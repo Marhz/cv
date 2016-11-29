@@ -19,6 +19,7 @@ $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->formations();
 $pdf->exp();
+$pdf->comp();
 $pdf->Output();
 
 
