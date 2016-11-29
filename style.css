@@ -67,8 +67,9 @@ p{
 	font-size: 14px;
 }
 
-.prev-photo{
+.prev1-photo, .prev2-photo{
 	width:170px;
+	height: 190px;
 	float:left;
 	margin-right: 10px;
 }
@@ -106,10 +107,6 @@ p{
 	color:white;
 }
 
-.prev1-formations{
-
-}
-
 .date{
 	margin-top:5px;
 	font-weight: bold;
@@ -119,4 +116,51 @@ p{
 
 .preview  p{
 	margin-top: 5px;
+}
+
+.prev2-sidebar{
+	float:left;
+	width: 110px;
+	height: 900px;
+	margin-right: 20px;
+	background: linear-gradient(to right, #ffd1f2 0%,#fd89d7 25%,#fd89d7 37%,#fd89d7 44%,#fd89d7 44%,#fd89d7 45%,#fba6e1 68%,#ff7cd8 100%);
+	/* background-image: url('img/left-bar1.png'); */
+	background-position: right;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.prev2-header{
+	font-family: Arial;
+	padding-top:40px;
+	font-weight: bold;
+	font-size: 18px;
+	color:#ffbaf0;
+}
+
+.prev2-section-name
+{
+	font-family: Arial;
+	padding-top:40px;
+	font-weight: bold;
+	font-size: 20px;
+	text-align: center;
+	background-color:#f442ce; /* rgb(244, 66, 206)*/
+	padding: 3px;
+	margin-top: 30px;
+	margin-left: 130px;
+	width: 76%;
+	color:white;
+}
+
+.prev2-img{
+	width:125px;
+	height: 90px;
+	position: absolute;
+	margin-right: 25px;
+	margin-top: 25px;
+	background-image:url('img/hello-kitty.png');
+	background-size: contain;
+	transform: rotate(-45deg);
+
 }
