@@ -23,8 +23,13 @@ class PDF extends FPDF
 	{	
 		extract($this->post);
 	    // Logo
+	    $this->setTextColor($this->template->header_font_color[0],$this->template->header_font_color[1],$this->template->header_font_color[2]);
 	    if(isset($this->template->left_bar_img))
 	    	$this->Image($this->template->left_bar_img,0,0,35,600);
+	    if(isset($this->template->kitty_top_img))
+	    	$this->Image($this->template->kitty_top_img,-2,5,45);
+	    if(isset($this->template->ribbon_img))
+	    	$this->Image($this->template->ribbon_img,175,-1,35);
 	    $this->setLeftMargin(40);
 	    if(isset($this->photo))
 	    	$this->Image('img/'.$this->photo,$this->template->img_x+$this->lMargin-10,$this->template->img_y,45);
@@ -53,7 +58,7 @@ class PDF extends FPDF
 		$this->Cell(0,10,'Formations',1,1,$this->template->sub_header_align,'#cecece');
 		$this->ln(8);
 		$i = 0;
-		$this->setTextColor(0,0,0);
+		$this->setTextColor($this->template->text_font_color[0],$this->template->text_font_color[1],$this->template->text_font_color[2]);
 		foreach ($formations as $formation)
 		{
 			$this->SetFont($this->template->font_header,'B',14);
@@ -75,7 +80,7 @@ class PDF extends FPDF
 		$this->Cell(0,10,utf8_decode('Expériences professionnelles'),1,1,$this->template->sub_header_align,'#cecece');
 		$this->ln(8);
 		$i = 0;
-		$this->setTextColor(0,0,0);
+		$this->setTextColor($this->template->text_font_color[0],$this->template->text_font_color[1],$this->template->text_font_color[2]);
 		foreach ($exp_pro as $exp)
 		{
 			$this->SetFont($this->template->font_header,'B',14);
@@ -97,13 +102,15 @@ class PDF extends FPDF
 		$this->Cell(0,10,utf8_decode('Langues et compétences'),1,1,$this->template->sub_header_align,'#cecece');
 		$this->ln(8);
 		$i = 0;
-		$this->setTextColor(0,0,0);
+		$this->setTextColor($this->template->text_font_color[0],$this->template->text_font_color[1],$this->template->text_font_color[2]);
 		foreach ($competences as $competence)
 		{
 			$this->setFont($this->template->font_text,'',14);
 			$this->MultiCell(30,7,utf8_decode($competence),0,2);
 			$i++;
 		}
+		if(isset($this->template->kitty_bot_img))
+	    	$this->Image($this->template->kitty_bot_img,160,245,50);
 	}
 
 }

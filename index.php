@@ -14,6 +14,7 @@
 				<div class="prev{{themeNumber}}-sidebar"></div>
 				<img src="img/default-user-avatar.png" class="prev{{themeNumber}}-photo"/>
 				<div class="prev{{themeNumber}}-img"></div>
+				<div class="prev{{themeNumber}}-ribbon"></div>
 				<div class="prev{{themeNumber}}-header">
 					<p>Nom: {{name}}</p>
 					<p>Prénom: {{first_name}}</p>	
@@ -24,23 +25,25 @@
 				<div class="prev{{themeNumber}}-formations">
 					<div class="prev{{themeNumber}}-section-name">Formations</div>
 					<div v-for="formation in formations">
-						<p class="date">{{formation.debut}}-{{formation.fin}}</p>
-						<p>{{formation.desc}}</p>
+						<p class="date prev{{themeNumber}}-date">{{formation.debut}}-{{formation.fin}}</p>
+						<p class="prev{{themeNumber}}-text">{{formation.desc}}</p>
 					</div>
 				</div>
 				<div class="prev{{themeNumber}}-exp">	
 					<div class="prev{{themeNumber}}-section-name">Expériences professionnelles</div>
 					<div v-for="exp_pro in exps_pro">
-						<p class="date">{{exp_pro.debut}}-{{exp_pro.fin}}</p>
-						<p>{{exp_pro.desc}}</p>
+						<p class="date prev{{themeNumber}}-date">{{exp_pro.debut}}-{{exp_pro.fin}}</p>
+						<p class="prev{{themeNumber}}-text">{{exp_pro.desc}}</p>
 					</div>
 				</div>
 				<div class="prev{{themeNumber}}-comp">	
 					<div class="prev{{themeNumber}}-section-name">Langues et compétences</div>
 					<div v-for="competence in competences">
-						<p>{{competence.desc}}</p>
+						<p class="prev{{themeNumber}}-text">{{competence.desc}}</p>
 					</div>
+				<div class="prev{{themeNumber}}-footer-img"></div>
 				</div>
+
 			</div>
 		</div>
 		<div class="sidebar">

@@ -56,6 +56,7 @@ p{
 }
 
 .preview{
+	position: relative;
 	height: 900px;
 	width: 650px;
 	background: white;
@@ -131,16 +132,16 @@ p{
 }
 
 .prev2-header{
-	font-family: Arial;
+	font-family: 'Comic sans ms';
 	padding-top:40px;
 	font-weight: bold;
 	font-size: 18px;
-	color:#ffbaf0;
+	color:#ffbaf0; /* rgb(255, 186, 240) */
 }
 
 .prev2-section-name
 {
-	font-family: Arial;
+	font-family: 'comic sans ms';
 	padding-top:40px;
 	font-weight: bold;
 	font-size: 20px;
@@ -154,13 +155,34 @@ p{
 }
 
 .prev2-img{
-	width:125px;
-	height: 90px;
+	width:150px;
+	height: 110px;
 	position: absolute;
-	margin-right: 25px;
-	margin-top: 25px;
-	background-image:url('img/hello-kitty.png');
+	margin-left: -10px;
+	margin-top: 15px;
+	background-image:url('img/hello-kitty2.png');
 	background-size: contain;
-	transform: rotate(-45deg);
+	/* transform: rotate(-45deg); */
+}
 
+.prev2-ribbon{
+	width: 100px;
+	height: 100px;
+	float:right;
+	background-image:url('img/ribbon.png');
+	background-size: contain;
+}
+
+.prev2-footer-img{
+	width: 150px;
+	height: 150px;
+	position:absolute;
+	bottom:0px;
+	right: 0px;
+	background-image: url('img/footer-kitty.jpeg');
+	background-size: contain;
+}
+
+.prev2-date, .prev2-text{
+	color:#ef86d8;
 }

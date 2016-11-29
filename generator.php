@@ -2,6 +2,7 @@
 
 require 'PDF.php';
 require 'Template1.php';
+require 'Template2.php';
 
 $photo = null;
 if($_FILES['photo']['size'] > 0){
@@ -10,18 +11,20 @@ if($_FILES['photo']['size'] > 0){
 	move_uploaded_file($_FILES['photo']['tmp_name'],'img/'.$photo);
 }
 
+$templateName = 'Template'.$_POST['theme'];
+$template = new $templateName;
 
-$template = new Template1;
 $pdf = new PDF();
 $pdf->setTemplate($template,$photo);
 $pdf->setPost($_POST);
+$pdf->AddFont('Comic');
+$pdf->AddFont('Comic','B','comicbd.php');
 $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->formations();
 $pdf->exp();
 $pdf->comp();
 $pdf->Output();
-
 
 function str_rand($str, $size){
 	$result = '';
