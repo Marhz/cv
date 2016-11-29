@@ -3,23 +3,24 @@
 require 'PDF.php';
 require 'Template1.php';
 
-if(isset($_FILES['photo'])){
+$photo = null;
+if($_FILES['photo']['size'] > 0){
 	$extension = pathinfo($_FILES['photo']['name'],PATHINFO_EXTENSION);
-	$name = str_rand("azertyuiop123456789",8).'.'.$extension;
-	move_uploaded_file($_FILES['photo']['tmp_name'],'img/'.$name);
+	$photo = str_rand("azertyuiop123456789",8).'.'.$extension;
+	move_uploaded_file($_FILES['photo']['tmp_name'],'img/'.$photo);
 }
 
-/*$template = new Template1;
+
+$template = new Template1;
 $pdf = new PDF();
-$pdf->setTemplate($template);
+$pdf->setTemplate($template,$photo);
 $pdf->setPost($_POST);
 $pdf->AliasNbPages();
 $pdf->AddPage();
-$pdf->SetFont('Times','',12);
 $pdf->formations();
 $pdf->exp();
 $pdf->Output();
-*/
+
 
 function str_rand($str, $size){
 	$result = '';

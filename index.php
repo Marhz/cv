@@ -10,9 +10,36 @@
 <body>
 	<div id="app">
 		<div class="main">
-			<p>vrgcermbvmvmazmdzem</p>
-			<div v-for="exp_pro in exps_pro">
-				<p>{{exp_pro.desc}}</p>
+			<div class="preview">	
+				<div class="prev1-sidebar"></div>
+				<img src="img/default-user-avatar.png" class="prev-photo"/>
+				<div class="prev1-header">
+					<p>Nom: {{name}}</p>
+					<p>Prénom: {{first_name}}</p>	
+					<p>Mail: {{email}}</p>	
+					<p>Tel: {{tel}}</p>	
+					<p>Date de naissance: {{date_naissance}}</p>	
+				</div>
+				<div class="prev1-formations">
+					<div class="prev1-section-name">Formations</div>
+					<div v-for="formation in formations">
+						<p class="date">{{formation.debut}}-{{formation.fin}}</p>
+						<p>{{formation.desc}}</p>
+					</div>
+				</div>
+				<div class="prev1-exp">	
+					<div class="prev1-section-name">Expériences professionnelles</div>
+					<div v-for="exp_pro in exps_pro">
+						<p class="date">{{exp_pro.debut}}-{{exp_pro.fin}}</p>
+						<p>{{exp_pro.desc}}</p>
+					</div>
+				</div>
+				<div class="prev1-comp">	
+					<div class="prev1-section-name">Langues et compétences</div>
+					<div v-for="competence in competences">
+						<p>{{competence.desc}}</p>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="sidebar">
@@ -27,27 +54,27 @@
 
 				<div class="form-group">
 					<label for="nom">Nom :</label>
-					<input class="form-control" type="text" id="nom" name="nom"/>
+					<input v-model="name" class="form-control" type="text" id="nom" name="nom"/>
 				</div>	
 
 				<div class="form-group">
 					<label for="prenom">Prenom :</label>
-					<input class="form-control" type="text" id="prenom" name="prenom"/>
+					<input v-model="first_name" class="form-control" type="text" id="prenom" name="prenom"/>
 				</div>	
 
 				<div class="form-group">
 					<label for="email">Email :</label>
-					<input class="form-control" type="text" id="email" name="mail"/>
+					<input v-model="email" class="form-control" type="text" id="email" name="mail"/>
 				</div>	
 
 				<div class="form-group">
 					<label for="date-naissance">Date de naissance :</label>
-					<input class="form-control" type="text" id="date-naissance" name="date"/>
+					<input v-model="date_naissance" class="form-control" type="text" id="date-naissance" name="date"/>
 				</div>	
 
 				<div class="form-group">
 					<label for="Tel">Tel :</label>
-					<input class="form-control" type="text" id="Tel" name="tel"/>
+					<input v-model="tel" class="form-control" type="text" id="Tel" name="tel"/>
 				</div>	
 
 				<h2>Formations</h2>	
@@ -65,7 +92,7 @@
 					<i v-on:click="removeFormation(formation)" class="fa fa-minus-circle my-button minus pull-right"></i>
 				</div>
 				<div class="clear"></div>				
-				<i @click="addFormation" class="fa fa-plus-circle my-button plus pull-right"></i>	
+				<i @click="this.size < 140 ? addFormation() : maxSize()" class="fa fa-plus-circle my-button plus pull-right"></i>	
 
 				<h2>Expériences profesionnelles</h2>	
 
@@ -82,7 +109,17 @@
 					<i @click="removeExp(exp_pro)" class="fa fa-minus-circle my-button minus pull-right"></i>
 				</div>
 				<div class="clear"></div>
-				<i @click="addExpsPro" class="fa fa-plus-circle my-button plus pull-right"></i>
+				<i @click="this.size < 140 ? addExpsPro() : maxSize()" class="fa fa-plus-circle my-button plus pull-right"></i>
+				
+				<h2>Langues et compétences</h2>
+
+				<div class="form-group" v-for="competence in competences">
+					<label for="competences">Descriptif</label>
+					<input v-model="competence.desc" name="competences[]" class="form-control" id="competences"></textarea>
+					<i @click="removeCompetence(competence)" class="fa fa-minus-circle my-button minus pull-right"></i>
+				</div>
+				<div class="clear"></div>
+				<i @click="this.size < 140 ? addCompetences() : maxSize()" class="fa fa-plus-circle my-button plus pull-right"></i>
 
 				<input type="submit" class="btn btn-primary form-control" />
 			</form>
@@ -95,6 +132,7 @@
 		new Vue({
 			el: "#app",
 			data:{
+				size: 0,
 				formations:[{
 					debut : '',
 					fin : '',
@@ -104,22 +142,39 @@
 					debut : '',
 					fin : '',
 					desc : ''
+				}],
+				competences:[{
+					desc:'',
 				}]
 			},
 			methods : {
 				addFormation : function(){
 					this.formations.push({debut : '', fin : '', desc : ''});
+					this.size += 20;
 				},
 				addExpsPro : function(){
 					this.exps_pro.push({debut :'', fin : '', desc : ''});
+					this.size += 20;
+				},
+				addCompetences : function(){
+					this.competences.push({desc : ''});
+					this.size += 20;
 				},
 				removeExp: function (exp_pro) {
       				this.exps_pro.$remove(exp_pro);
+      				this.size -= 20;
    				},
    				removeFormation: function (formation) {
       				this.formations.$remove(formation);
+      				this.size -= 10;
+   				},
+   				removeCompetence: function (competence) {
+      				this.competences.$remove(competence);
+      				this.size -= 10;
+   				},
+   				maxSize(){
+   					alert('Vous avez atteint le nombre maximum de champs!');
    				}
-
 			}
 		});
 
