@@ -52,15 +52,25 @@
 				<h2>Thèmes</h2>
 
 				<div class="form-group">
-					<label for="theme1" class="radio-inline"><input type="radio" name="theme" id="theme1" value="1" @click="changeTheme(1)"></label>
-					<label for="theme2" class="radio-inline"><input type="radio" name="theme" id="theme2" value="2" @click="changeTheme(2)"></label>
-					<label for="theme3" class="radio-inline"><input type="radio" name="theme" id="theme3" value="3" @click="changeTheme(3)"></label>
+					<input type="radio" name="theme" id="theme1" value="1" @click="changeTheme(1)" checked>
+					<label for="theme1" class="radio-inline prev-select">
+						<img src="img/preview1" alt="">
+					</label>
+					<input type="radio" name="theme" id="theme2" value="2" @click="changeTheme(2)">
+					<label for="theme2" class="radio-inline prev-select">
+						<img src="img/preview2" alt="">
+					</label>
+					<input type="radio" name="theme" id="theme3" value="3" @click="changeTheme(3)">
+					<label for="theme3" class="radio-inline prev-select">
+						<img src="img/preview3" alt="">
+					</label>
+						
 				</div>
 
 				<h2>Infos personnelles</h2>	
 
 				<div class="form-group">
-					<label for="photo">Photo(optionel)</label>
+					<label for="photo">Photo(optionelle)</label>
 					<input type="file" name="photo" id="photo" class="form-control">
 				</div>	
 
@@ -144,7 +154,7 @@
 		app = new Vue({
 			el: "#app",
 			data:{
-				themeNumber: 2,
+				themeNumber: 1,
 				size: 0,
 				formations:[{
 					debut : '',

@@ -35,7 +35,8 @@ p{
 	top:0px;
 	right:0px;
 	overflow-y:scroll;
-	max-height: 100%;
+	min-height: 900px;
+	height: 100%;
 	float:right;
 	width: 28%;
 	background: #a8cc35;
@@ -185,4 +186,51 @@ p{
 
 .prev2-date, .prev2-text{
 	color:#ef86d8;
+}
+.prev3-header{
+	font-family: 'arial';
+	padding-top:40px;
+	font-weight: bold;
+	font-size: 18px;
+	margin-left:30px;
+}
+
+.prev3-section-name
+{
+	font-family: Arial;
+	padding-top:40px;
+	font-weight: bold;
+	font-size: 20px;
+	text-align: left;
+	background-color:rgb(66,134,244);
+	padding: 3px;
+	margin:auto;
+	margin-top: 30px;
+	width: 92%;
+	color:white;
+}
+.prev3-date, .prev3-text{
+	font-family:'courier';
+	margin-left: 30px;
+}
+
+.prev3-photo{
+	width:170px;
+	height: 190px;
+	float:right;
+	margin-right: 30px;
+}
+
+.prev-select{
+	height: 150px;
+	filter:grayscale(100%);
+}
+input[type=radio]:checked+label{
+	filter:grayscale(0%)
+}
+input[type=radio]{
+	display: none;
+}
+.prev-select img{
+	height: 150px;
 }

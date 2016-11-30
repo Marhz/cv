@@ -30,7 +30,7 @@ class PDF extends FPDF
 	    	$this->Image($this->template->kitty_top_img,-2,5,45);
 	    if(isset($this->template->ribbon_img))
 	    	$this->Image($this->template->ribbon_img,175,-1,35);
-	    $this->setLeftMargin(40);
+	    $this->setLeftMargin($this->template->leftMagin);
 	    if(isset($this->photo))
 	    	$this->Image('img/'.$this->photo,$this->template->img_x+$this->lMargin-10,$this->template->img_y,45);
 	    // Police Arial gras 15

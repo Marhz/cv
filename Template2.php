@@ -25,6 +25,7 @@ class Template2
 	public $kitty_bot_img;
 	public $kitty_top_img;
 	public $header_font_color;
+	public $leftMagin;
 
 	
 	function __construct()
@@ -50,5 +51,6 @@ class Template2
 		$this->kitty_bot_img = 'img/footer-kitty.jpeg';
 		$this->ribbon_img = 'img/ribbon.png';
 		$this->header_font_color = [255, 186, 240];
+		$this->leftMagin = 40;
 	}
 }

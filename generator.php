@@ -3,6 +3,7 @@
 require 'PDF.php';
 require 'Template1.php';
 require 'Template2.php';
+require 'Template3.php';
 
 $photo = null;
 if($_FILES['photo']['size'] > 0){
